@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+    }
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      z-index: 1000;
+    }
+    .menu-btn {
+      font-size: 18px;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      transition: opacity 0.3s ease;
+    }
+    .menu-btn.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #logo {
+      height: 80px;
+      width: auto;
+      cursor: pointer;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 10px;
+    }
+    .find-dealer {
+      font-size: 18px;
+      color: white;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .sidemenu {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1001;
+      top: 0;
+      left: 0;
+      background-color: rgba(0,0,0,0.9);
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+    .sidemenu a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+    .sidemenu a:hover {
+      color: #f1f1f1;
+    }
+    .sidemenu .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+    .hero-section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+    .hero-section h1 {
+      font-size: 7em;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .hero-section p {
+      font-size: 1.5em;
+      font-weight: 400;
+    }
+    .hero-section .tagline {
+      font-size: 2em;
+      font-weight: 400;
+      margin-top: 20px;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 2px solid black;
+      border-radius: 5px;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+    .cta-button:hover {
+      background-color: white;
+      color: black;
+    }
+    .black-text {
+      color: black;
+    }
+    .scroll-arrow {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 3em;
+      color: black;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      40% {
+        transform: translateX(-50%) translateY(-30px);
+      }
+      60% {
+        transform: translateX(-50%) translateY(-15px);
+      }
+    }
+    .carousel-container {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 30px 0;
+      margin-top: 10vh;
+    }
+    .partners-carousel {
+      display: flex;
+      overflow-x: auto;
+      padding: 20px;
+    }
+    .partner-tile {
+      flex: 0 0 auto;
+      width: 260px;
+      height: 130px;
+      margin-right: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+    }
+    .mission-statement {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 40px;
+      margin: 50px auto;
+      max-width: 1250px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .mission-statement p {
+      font-size: 1.8em;
+      line-height: 1.6;
+      color: black;
+      margin-bottom: 30px;
+    }
+    .founders-section {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 40px;
+      margin: 50px auto;
+      max-width: 1000px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .founders-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      color: black;
+    }
+    .founders-grid {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .founder-card {
+      width: 300px;
+      margin-bottom: 30px;
+    }
+    .founder-image {
+      width: 250px;
+      height: 250px;
+      border-radius: 20px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    .founder-name {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: black;
+      margin-bottom: 5px;
+    }
+    .founder-title {
+      font-size: 1em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+<video autoplay muted loop id="bg-video">
+  <source src="Comp%201.mp4" type="video/mp4" >
+  Your browser does not support the video tag.
+</video>
+
+<div class="top-bar">
+  <button class="menu-btn" onclick="openNav()">☰ MENU</button>
+  <a href="EdvanceWebsite.html"><img id="logo" src="Non-profit_Logo_(4)-transformed.png" alt="Edvance AI Logo" ></a>
+  <a href="#" class="find-dealer">Current Services</a>
+</div>
+
+<div class="hero-section">
+  <h1 class="black-text">Our Story</h1>
+  <div class="tagline black-text">What are we all about?</div>
+
+  <div class="scroll-arrow" onclick="scrollToCarousels()">&#8595;</div>
+</div>
+
+<div class="mission-statement">
+  <p>As students, researchers, and engineers we've been part of the AI revolution over the past several years, like so many others. We've witnessed its impact on our lives and its potential to reshape the world. Hoping to ensure that the next generation is empowered to harness this powerful technology for good in this world, we founded Edvance AI. As an international non-profit, we're working tirelessly to host free, high-quality AI workshops, provide in-depth resources, and establish a mentorship program for student-led AI projects that are harnessing AI for good. We're expanding from coast to coast and into numerous school districts worldwide, aiming to reach students of all backgrounds, interests, and skill levels.</p>
+  <a href="#" class="cta-button black-text">Be Part of This Story</a>
+</div>
+
+<div class="founders-section">
+  <h2>Our Founders</h2>
+  <div class="founders-grid">
+    <div class="founder-card">
+      <img src="1720674071447%20(1)%20(1).jpeg" alt="Parim Shah" class="founder-image">
+      <div class="founder-name">Parim Shah</div>
+      <div class="founder-title">Co-Founder</div>
+    </div>
+    <div class="founder-card">
+      <img src="Quinley_Edvance.png" alt="Rishi Narang" class="founder-image">
+      <div class="founder-name">Rishi Narang</div>
+      <div class="founder-title">Co-Founder</div>
+    </div>
+    <div class="founder-card">
+      <img src="Quinley_Edvance.png" alt="Quinley Borden" class="founder-image">
+      <div class="founder-name">Quinley Borden</div>
+      <div class="founder-title">Co-Founder</div>
+    </div>
+  </div>
+</div>
+
+<div class="carousel-container">
+  <div class="partners-carousel">
+    <div class="partner-tile">Partner 1</div>
+    <div class="partner-tile">Partner 2</div>
+    <div class="partner-tile">Partner 3</div>
+    <div class="partner-tile">Partner 4</div>
+    <div class="partner-tile">Partner 5</div>
+  </div>
+</div>
+
+<div id="mySidemenu" class="sidemenu">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="AboutUs.html">About</a>
+  <a href="Contacts.html">Contact</a>
+</div>
+
+<script>
+  function openNav() {
+    document.getElementById("mySidemenu").style.width = "250px";
+    document.querySelector(".menu-btn").classList.add("hidden");
+  }
+
+  function closeNav() {
+    document.getElementById("mySidemenu").style.width = "0";
+    document.querySelector(".menu-btn").classList.remove("hidden");
+  }
+
+  function refreshPage() {
+    location.reload();
+  }
+
+  function scrollToCarousels() {
+    document.querySelector('.carousel-container').scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+</script>
+</body>
+</html>

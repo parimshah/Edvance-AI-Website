@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 1000;
+        }
+        .menu-btn {
+            font-size: 18px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            transition: opacity 0.3s ease;
+        }
+        .menu-btn.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .highlight {
+            color: #000000;
+            font-weight: bold;
+        }
+        #logo {
+            height: 80px;
+            width: auto;
+            cursor: pointer;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 10px;
+        }
+        .find-dealer {
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .sidemenu {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,0.9);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        .sidemenu a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidemenu a:hover {
+            color: #f1f1f1;
+        }
+        .sidemenu .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .hero-section h1 {
+            font-size: 7em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .hero-section p {
+            font-size: 1.5em;
+            font-weight: 400;
+        }
+        .hero-section .tagline {
+            font-size: 2em;
+            font-weight: 400;
+            margin-top: 20px;
+        }
+        .scroll-arrow {
+            position: absolute;
+            bottom: 20px;
+            font-size: 3em;
+            color: black;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+        .mission-statement {
+            width: 100%;
+            padding: 40px 0;
+            background-image: url('Website Banner (1).png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+        .mission-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .mission-statement h2 {
+            font-size: 2.4em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .mission-statement p {
+            font-size: 1.6em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #444;
+        }
+        .mission-statement ul {
+            text-align: left;
+            font-size: 1.6em;
+            padding-left: 40px;
+            margin-bottom: 20px;
+            color: #444;
+            display: inline-block;
+        }
+        .join-us-section {
+            width: 100%;
+            padding: 50px 0;
+            background-color: #f0f8ff;
+        }
+
+        .join-us-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .join-us-text {
+            flex: 0 1 70%;  /* Adjust this value as needed */
+            padding-right: 0px;
+        }
+
+        .join-us-button {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .join-us-section h2 {
+            font-size: 3.8em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .join-us-section p {
+            font-size: 2.2em;
+            color: #444;
+            line-height: 1.4;
+        }
+
+        .apply-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 2em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .apply-button:hover {
+            background-color: #0056b3;
+        }
+        .carousel-container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 0;
+            margin-top: 0;
+        }
+        .review-carousel, .partners-carousel {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px;
+        }
+        .review-tile {
+            flex: 0 0 auto;
+            width: 250px;
+            margin-right: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: white;
+        }
+        .partner-tile {
+            flex: 0 0 auto;
+            width: 200px;
+            height: 100px;
+            margin-right: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+        }
+        .nationwide-notification {
+            position: fixed;
+            bottom: -100px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px 30px 15px 15px;
+            border-radius: 5px;
+            font-style: italic;
+            transition: bottom 0.5s ease-in-out;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+        .nationwide-notification.show {
+            bottom: 20px;
+        }
+        .nationwide-notification .close-btn {
+            margin-left: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            padding: 10px;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid black;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        .cta-button:hover {
+            background-color: white;
+            color: black;
+        }
+        .black-text {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<video autoplay muted loop id="bg-video">
+    <source src="Comp%201.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<div class="top-bar">
+    <button class="menu-btn" onclick="openNav()">☰ MENU</button>
+    <img id="logo" src="Non-profit_Logo_(4)-transformed.png" alt="Edvance AI Logo" onclick="refreshPage()">
+    <a href="#" class="find-dealer">Learn</a>
+</div>
+
+<div class="hero-section">
+    <h1 class="black-text">Edvance AI</h1>
+    <div class="tagline black-text">Empowering the next generation to harness AI for good.</div>
+    <div class="tagline black-text">Got any questions? Feel free to reach out!</div>
+    <a href="join-us.html" class="cta-button black-text">Join us now</a>
+    <div class="scroll-arrow" onclick="scrollToCarousels()">&#8595;</div>
+</div>
+
+<div class="mission-statement">
+    <div class="mission-content">
+        <h2>Our Mission</h2>
+        <p>We believe that artificial intelligence (AI) will fundamentally change our world. In such a world, it is crucial that the next generation is empowered to <span class="highlight">harness AI for good</span>. Our mission is to do just that by providing free, high-quality AI workshops and resources for students of all skill levels and interests, engaging guest speaker panels with AI experts, mentorship for student-led AI projects aimed at benefiting their communities.</p>
+    </div>
+</div>
+
+<div class="join-us-section">
+    <div class="join-us-content">
+        <div class="join-us-text">
+            <h2>Join Edvance AI Today</h2>
+            <p>Take AI education to new heights. Positions open for all high schoolers in PR, outreach, and education.</p>
+        </div>
+        <div class="join-us-image">
+            <!-- Add your image here -->
+        </div>
+        <div class="join-us-button">
+            <a href="#" class="apply-button">Sign Up →</a>
+        </div>
+    </div>
+</div>
+
+<div class="carousel-container">
+    <div class="review-carousel">
+        <div class="review-tile">
+            <p>Coming Soon...</p>
+        </div>
+        <div class="review-tile">
+            <p>Coming Soon...</p>
+        </div>
+        <div class="review-tile">
+            <p>Coming Soon...</p>
+        </div>
+    </div>
+
+    <div class="partners-carousel">
+        <div class="partner-tile">Partner 1</div>
+        <div class="partner-tile">Partner 2</div>
+        <div class="partner-tile">Partner 3</div>
+        <div class="partner-tile">Partner 4</div>
+        <div class="partner-tile">Partner 5</div>
+    </div>
+</div>
+
+<div id="mySidemenu" class="sidemenu">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="AboutUs.html">About</a>
+    <a href="Contacts.html">Contact</a>
+</div>
+
+<div class="nationwide-notification" id="nationwideNotification">
+    <span class="close-btn" onclick="dismissNotification()">&times;</span>
+    We're Nationwide!
+</div>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidemenu").style.width = "250px";
+        document.querySelector(".menu-btn").classList.add("hidden");
+    }
+
+    function closeNav() {
+        document.getElementById("mySidemenu").style.width = "0";
+        document.querySelector(".menu-btn").classList.remove("hidden");
+    }
+
+    function refreshPage() {
+        location.reload();
+    }
+
+    function scrollToCarousels() {
+        document.querySelector('.carousel-container').scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+
+    setTimeout(function() {
+        document.getElementById('nationwideNotification').classList.add('show');
+    }, 1000);
+
+    function dismissNotification() {
+        document.getElementById('nationwideNotification').classList.remove('show');
+    }
+</script>
+</body>
+</html>
