@@ -12,6 +12,7 @@
             overflow-x: hidden;
             font-family: 'Montserrat', sans-serif;
             scroll-behavior: smooth;
+            zoom: 90%;
         }
         #bg-video {
             position: fixed;
@@ -24,6 +25,7 @@
         }
         .top-bar {
             position: fixed;
+            display: flex;
             top: 0;
             left: 0;
             right: 0;
@@ -31,7 +33,6 @@
             background-color: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             display: flex;
-            justify-content: space-between;
             align-items: center;
             padding: 0 20px;
             z-index: 1000;
@@ -59,15 +60,22 @@
             width: auto;
             cursor: pointer;
             position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 10px;
+            bottom: 0px;
+            left: 20px;
+            zoom: 130%;
+        }
+       .nav-links {
+            display: flex;
+            flex: 1;
+            justify-content: center; /* Center the navigation links */
+            gap: 20px; /* Space between navigation links */
         }
         .find-dealer {
-            font-size: 18px;
+            font-size: 25px;
             color: white;
             text-decoration: none;
             font-family: 'Montserrat', sans-serif;
+            margin: 0 15px;
         }
         .sidemenu {
             height: 100%;
@@ -100,7 +108,7 @@
             margin-left: 50px;
         }
         .hero-section {
-            height: 100vh;
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -108,20 +116,24 @@
             text-align: center;
             color: white;
             position: relative;
+            zoom: 60%;
         }
         .hero-section h1 {
-            font-size: 7em;
+            font-size: 10em;
             font-weight: 700;
             margin-bottom: 20px;
         }
         .hero-section p {
-            font-size: 1.5em;
+            font-size: 2em;
             font-weight: 400;
         }
         .hero-section .tagline {
-            font-size: 2em;
+            font-size: 4em;
             font-weight: 400;
             margin-top: 20px;
+        }
+        .hero-section .bold {
+            font-weight: 600;
         }
         .scroll-arrow {
             position: absolute;
@@ -207,7 +219,7 @@
         }
 
         .join-us-section h2 {
-            font-size: 3.8em;
+            font-size: 3em;
             margin-bottom: 10px;
             color: #333;
         }
@@ -237,13 +249,15 @@
         }
         .carousel-container {
             background-color: rgba(0, 0, 0, 0.5);
-            padding: 0;
+            padding: 20px;
             margin-top: 0;
+            text-align: center; /* Centers content inside the carousel-container */
         }
         .review-carousel, .partners-carousel {
             display: flex;
             overflow-x: auto;
             padding: 20px;
+            justify-content: center; /* Centers tiles horizontally within the carousel */
         }
         .review-tile {
             flex: 0 0 auto;
@@ -254,37 +268,68 @@
             border-radius: 10px;
             color: white;
         }
+        .carousel-container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            margin-top: 0px;
+            text-align: center; /* Centers content inside the carousel-container */
+        }
+        .carousel-title {
+            color: white;
+            font-size: 40px; /* Adjust size as needed */
+            margin-bottom: 10px; /* Space between title and carousel */
+        }
+        .review-carousel, .partners-carousel {
+            display: flex;
+            overflow-x: auto;\
+            padding: 10px;
+            justify-content: center; /* Centers tiles horizontally within the carousel */
+        }
         .partner-tile {
             flex: 0 0 auto;
-            width: 200px;
-            height: 100px;
+            width: 300px; /* Increased width for better fit */
+            height: 250px; /* Increased height to accommodate both image and text */
             margin-right: 20px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column; /* Allows for image and text to be stacked */
+            align-items: center; /* Centers text horizontally */
             color: white;
             font-weight: bold;
+            position: relative; /* Needed for absolute positioning of the image */
+            overflow: hidden; /* Hides any overflow from the image or text */
         }
-        .nationwide-notification {
+        .partner-tile img {
+            width: 100%;
+            height: 150px; /* Adjust height to fit the image */
+            object-fit: contain; /* Ensures image covers the area without distortion */
+            margin-top: 10px
+        }
+        .partner-tile .text {
+            padding: 10px; /* Adds padding around text */
+            width: 100%;
+            text-align: center; /* Centers text within the tile */
+        }
+        .notification {
             position: fixed;
             bottom: -100px;
             right: 20px;
             background-color: rgba(0, 0, 0, 0.8);
-            color: white;
+            color: #f0f8ff;
             padding: 15px 30px 15px 15px;
             border-radius: 5px;
-            font-style: italic;
             transition: bottom 0.5s ease-in-out;
             z-index: 1000;
             display: flex;
             align-items: center;
+            font-weight: bold; /* Adjust font weight as needed */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add drop shadow */
         }
-        .nationwide-notification.show {
+        .notification.show {
             bottom: 20px;
         }
-        .nationwide-notification .close-btn {
+        .notification .close-btn {
             margin-left: 15px;
             cursor: pointer;
             font-size: 20px;
@@ -310,6 +355,16 @@
         .black-text {
             color: black;
         }
+        .footer {
+            background-color: black;
+            color: white;
+            padding: 10px;
+            text-align: center; /* Center the text */
+            bottom: 0; /* Align it to the bottom of the page */
+            left: 0; /* Stretch it across the page */
+            right: 0; /* Stretch it across the page */
+}
+
     </style>
 </head>
 <body>
@@ -319,60 +374,57 @@
 </video>
 
 <div class="top-bar">
-    <button class="menu-btn" onclick="openNav()">☰ MENU</button>
-    <img id="logo" src="Non-profit_Logo_(4)-transformed.png" alt="Edvance AI Logo" onclick="refreshPage()">
-    <a href="#" class="find-dealer">Learn</a>
+  <a href="index.html"><img id="logo" src="Non-profit_Logo_(4)-transformed.png" alt="Edvance AI Logo"></a>
+  <div class="nav-links">
+    <a href="index.html" class="find-dealer">Home</a>
+    <a href="AboutUs.html" class="find-dealer">Our Story</a>
+    <a href="Contacts.html" class="find-dealer">Contact</a>
+  </div>
 </div>
 
 <div class="hero-section">
     <h1 class="black-text">Edvance AI</h1>
-    <div class="tagline black-text">Empowering the next generation to harness AI for good.</div>
-    <div class="tagline black-text">Got any questions? Feel free to reach out!</div>
-    <a href="join-us.html" class="cta-button black-text">Join us now</a>
+    <div class="tagline black-text">Empowering the next generation to <span class="bold">harness AI for good.</span></div>
     <div class="scroll-arrow" onclick="scrollToCarousels()">&#8595;</div>
 </div>
 
 <div class="mission-statement">
     <div class="mission-content">
         <h2>Our Mission</h2>
-        <p>We believe that artificial intelligence (AI) will fundamentally change our world. In such a world, it is crucial that the next generation is empowered to <span class="highlight">harness AI for good</span>. Our mission is to do just that by providing free, high-quality AI workshops and resources for students of all skill levels and interests, engaging guest speaker panels with AI experts, mentorship for student-led AI projects aimed at benefiting their communities.</p>
+        <p>We believe that artificial intelligence (AI) will fundamentally change our world. In such a world, it is crucial that the next generation is empowered to <span class="highlight">harness AI for good</span>. Our mission is to do just that by providing free, high-quality AI workshops and resources for students of all skill levels and interests, engaging guest speaker panels with AI experts, and mentorship for student-led AI projects aimed at benefiting their communities.</p>
     </div>
 </div>
 
 <div class="join-us-section">
     <div class="join-us-content">
         <div class="join-us-text">
-            <h2>Join Edvance AI Today</h2>
-            <p>Take AI education to new heights. Positions open for all high schoolers in PR, outreach, and education.</p>
+            <h2>Join Edvance AI Today and take AI education to new heights.</h2>
+            <p>Positions open for all high schoolers in PR, outreach, and education.</p>
         </div>
         <div class="join-us-image">
             <!-- Add your image here -->
         </div>
         <div class="join-us-button">
-            <a href="#" class="apply-button">Sign Up →</a>
+            <a href="#" class="apply-button">Join Us →</a>
         </div>
     </div>
 </div>
 
 <div class="carousel-container">
-    <div class="review-carousel">
-        <div class="review-tile">
-            <p>Coming Soon...</p>
-        </div>
-        <div class="review-tile">
-            <p>Coming Soon...</p>
-        </div>
-        <div class="review-tile">
-            <p>Coming Soon...</p>
-        </div>
-    </div>
-
+    <h2 class="carousel-title">Strategic Partners</h2>
     <div class="partners-carousel">
-        <div class="partner-tile">Partner 1</div>
-        <div class="partner-tile">Partner 2</div>
-        <div class="partner-tile">Partner 3</div>
-        <div class="partner-tile">Partner 4</div>
-        <div class="partner-tile">Partner 5</div>
+        <div class="partner-tile">
+            <img src="Partner1.png" alt="Partner Logo">
+            <div class="text">Montgomery County Public Schools (MCPS)</div>
+        </div>
+        <div class="partner-tile">
+            <img src="Partner2.png" alt="Partner Logo">
+            <div class="text">Houston Independent School District (HSID)</div>
+        </div>
+        <div class="partner-tile">
+            <img src="Partner3.png" alt="Partner Logo">
+            <div class="text">Mountain View Los Altos School District</div>
+        </div>
     </div>
 </div>
 
@@ -382,10 +434,14 @@
     <a href="Contacts.html">Contact</a>
 </div>
 
-<div class="nationwide-notification" id="nationwideNotification">
+<div class="notification" id="Notification">
     <span class="close-btn" onclick="dismissNotification()">&times;</span>
-    We're Nationwide!
+    We're International!
 </div>
+
+<div class="footer">
+    <p>© 2024 Edvance AI. All Rights Reserved.</p>
+  </div>
 
 <script>
     function openNav() {
@@ -409,11 +465,11 @@
     }
 
     setTimeout(function() {
-        document.getElementById('nationwideNotification').classList.add('show');
+        document.getElementById('Notification').classList.add('show');
     }, 1000);
 
     function dismissNotification() {
-        document.getElementById('nationwideNotification').classList.remove('show');
+        document.getElementById('Notification').classList.remove('show');
     }
 </script>
 </body>
