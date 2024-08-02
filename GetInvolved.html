@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>About Us</title>
+  <title>Contact Us</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body, html {
@@ -24,7 +24,7 @@
       z-index: -1;
     }
     .top-bar {
-      position: fixed;
+      position: relative;
       display: flex;
       top: 0;
       left: 0;
@@ -75,7 +75,7 @@
     }
     .find-dealer:hover {
       opacity: 0.8; /* Optional: add hover effect */
-    }
+  }
     .sidemenu {
       height: 100%;
       width: 0;
@@ -116,9 +116,9 @@
       color: white;
       position: relative;
       zoom: 60%;
-        }
+     }
     .hero-section h1 {
-      font-size: 10em;
+      font-size: 8em;
       font-weight: 700;
       margin-bottom: 20px;
     }
@@ -134,7 +134,9 @@
     .cta-button {
       display: inline-block;
       padding: 15px 30px;
-      font-size: 18px;
+      margin-top: 10px;
+      margin-bottom: 60px;
+      font-size: 30px;
       background-color: rgba(255, 255, 255, 0.2);
       border: 2px solid black;
       border-radius: 5px;
@@ -173,78 +175,45 @@
       }
     }
     .carousel-container {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 0;
-            margin-top: 0;
-            text-align: center; /* Centers content inside the carousel-container */
-        }
-    .review-carousel, .partners-carousel {
-        display: flex;
-        overflow-x: auto;
-        padding: 20px;
-        justify-content: center; /* Centers tiles horizontally within the carousel */
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 30px 0;
+      margin-top: 20vh;
     }
-    .review-tile {
-        flex: 0 0 auto;
-        width: 250px;
-        margin-right: 20px;
-        padding: 20px;
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-        color: white;
-    }
-    .mission-statement {
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 40px;
-      margin: 50px auto;
-      max-width: 1250px;
-      border-radius: 10px;
-      text-align: center;
-    }
-    .mission-statement p {
-      font-size: 1.8em;
-      line-height: 1.6;
-      color: black;
-      margin-bottom: 30px;
-    }
-    .founders-section {
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 40px;
-      margin: 50px auto;
-      max-width: 1000px;
-      border-radius: 10px;
-      text-align: center;
-    }
-    .founders-section h2 {
-      font-size: 2.5em;
-      margin-bottom: 30px;
-      color: black;
-    }
-    .founders-grid {
+    .social-carousel, .partners-carousel {
       display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
+      overflow-x: auto;
+      padding: 20px;
     }
-    .founder-card {
-      width: 300px;
-      margin-bottom: 30px;
+    .social-tile {
+      flex: 0 0 auto;
+      width: 243.75px;
+      height: 243.75px;
+      margin-right: 20px;
+      margin_top: 10px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
-    .founder-image {
-      width: 250px;
-      height: 250px;
-      border-radius: 20px;
-      object-fit: cover;
-      margin-bottom: 15px;
+    .social-tile img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
-    .founder-name {
-      font-size: 1.2em;
+    .social-tile img:hover {
+      transform: scale(1.1);
+    }
+    .social-tile a {
+      color: white;
+      text-decoration: none;
       font-weight: bold;
-      color: black;
-      margin-bottom: 5px;
-    }
-    .founder-title {
-      font-size: 1em;
-      color: #555;
     }
     .footer {
       background-color: black;
@@ -272,39 +241,24 @@
   </div>
 </div>
 
+
+
 <div class="hero-section">
-  <h1 class="black-text">Our Story</h1>
-  <div class="tagline black-text">How did we got started?</div>
-
-  <div class="scroll-arrow" onclick="scrollToCarousels()">&#8595;</div>
-</div>
-
-<div class="mission-statement">
-  <p>As students, researchers, and engineers we've been part of the AI revolution over the past several years, like so many others. We've witnessed its impact on our lives and its potential to reshape the world. Hoping to ensure that the next generation is empowered to harness this powerful technology for good in this world, we founded Edvance AI. As an international non-profit, we're working tirelessly to host free, high-quality AI workshops, provide in-depth resources, and establish a mentorship program for student-led AI projects that are harnessing AI for good. We're expanding from coast to coast and into numerous school districts worldwide, aiming to reach students of all backgrounds, interests, and skill levels.</p>
-  <a href="GetInvolved.html" class="cta-button black-text">Be Part of This Story</a>
-</div>
-
-<div class="founders-section">
-  <h2>Our Founders</h2>
-  <div class="founders-grid">
-    <div class="founder-card">
-      <img src="1720674071447%20(1)%20(1).jpeg" alt="Parim Shah" class="founder-image">
-      <div class="founder-name">Parim Shah</div>
-      <div class="founder-title">Co-Founder</div>
+  <h1 class="black-text">Applications out Monday!</h1>
+  <a href="https://docs.google.com/forms/d/1me4XnDmN1_Lvw1DwdAqar8bIHRLXhFN-k8S0xDui7tI/edit" class="cta-button black-text">Apply Here Soon</a>
+  <div class="social-carousel">
+    <div class="social-tile">
+      <a href="https://www.linkedin.com/company/decodeify/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3BQU6DSOfFTIaDl5KhOyBfNw%3D%3D" target="_blank">
+        <img src="5282542_linkedin_network_social%20network_linkedin%20logo_icon%20(2).png" alt="LinkedIn">
+      </a>
     </div>
-    <div class="founder-card">
-      <img src="Rishi.png" alt="Rishi Narang" class="founder-image">
-      <div class="founder-name">Rishi Narang</div>
-      <div class="founder-title">Co-Founder</div>
-    </div>
-    <div class="founder-card">
-      <img src="Quinley_Edvance.png" alt="Quinley Borden" class="founder-image">
-      <div class="founder-name">Quinley Borden</div>
-      <div class="founder-title">Co-Founder</div>
+    <div class="social-tile">
+      <a href="https://www.instagram.com/edvanceai/" target="_blank">
+        <img src="5282544_camera_instagram_social%20media_social%20network_instagram%20logo_icon.png" alt="Instagram">
+      </a>
     </div>
   </div>
 </div>
-
 
 <div id="mySidemenu" class="sidemenu">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -316,6 +270,7 @@
 <div class="footer">
     <p>© 2024 Edvance AI. All Rights Reserved.</p>
   </div>
+
 
 <script>
   function openNav() {
