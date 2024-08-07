@@ -123,7 +123,7 @@
         .hero-section h1 {
             font-size: 11em;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
         .hero-section p {
             font-size: 2em;
@@ -132,10 +132,12 @@
         .hero-section .tagline {
             font-size: 4em;
             font-weight: 400;
-            margin-top: 20px;
+            margin-bottom: 20px;
         }
         .hero-section .bold {
             font-weight: 600;
+            underline: none;
+            color: black;
         }
         .scroll-arrow {
             position: absolute;
@@ -195,7 +197,8 @@
         }
         .join-us-section {
             width: 100%;
-            padding: 50px 0;
+            padding-bottom: 33px;
+            padding-top: 25px;
             background-color: #f0f8ff;
         }
 
@@ -221,8 +224,8 @@
         }
 
         .join-us-section h2 {
-            font-size: 3em;
-            margin-bottom: 10px;
+            font-size: 4em;
+            margin-bottom: 5px;
             color: #333;
         }
 
@@ -249,18 +252,6 @@
         .apply-button:hover {
             background-color: #0056b3;
         }
-        .carousel-container {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            margin-top: 0;
-            text-align: center; /* Centers content inside the carousel-container */
-        }
-        .review-carousel, .partners-carousel {
-            display: flex;
-            overflow-x: auto;
-            padding: 20px;
-            justify-content: center; /* Centers tiles horizontally within the carousel */
-        }
         .review-tile {
             flex: 0 0 auto;
             width: 250px;
@@ -275,11 +266,12 @@
             padding: 5px;
             margin-top: 0px;
             text-align: center; /* Centers content inside the carousel-container */
+            padding-bottom: 30px;
         }
         .carousel-title {
             color: white;
             font-size: 40px; /* Adjust size as needed */
-            margin-bottom: 10px; /* Space between title and carousel */
+            margin-bottom: 30px; /* Space between title and carousel */
         }
         .review-carousel, .partners-carousel {
             display: flex;
@@ -315,27 +307,60 @@
         }
         .notification {
             position: fixed;
-            bottom: -100px;
-            right: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #f0f8ff;
-            padding: 15px 30px 15px 15px;
-            border-radius: 5px;
-            transition: bottom 0.5s ease-in-out;
+            top: 20%; /* Adjust position to the top of the screen */
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 800px; /* Adjust width as needed */
+            background-color: white; /* Set background to black */
+            color: black; /* Set text color to white */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             z-index: 1000;
-            display: flex;
+            display: none; /* Hide initially */
+            flex-direction: column;
             align-items: center;
-            font-weight: bold; /* Adjust font weight as needed */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add drop shadow */
+            text-align: center;
+            opacity: 0; /* Start with 0 opacity */
+            transition: opacity 0.5s ease-in-out; /* Smooth fade-in and fade-out */
         }
         .notification.show {
-            bottom: 20px;
+            display: flex; /* Show flex box when visible */
+            opacity: 1; /* Full opacity */
         }
-        .notification .close-btn {
-            margin-left: 15px;
+        .notification-title {
+            font-size: 60px; /* Adjust font size as needed */
+            margin-bottom: 20px;
+            font-weight: bold;
+            padding: 5px;
+        }
+        .notification-text {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+        .notification-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 25px;
+            background-color: #6ca1cd; /* Set button background to light blue */
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            color: white;
+        }
+        .notification-button:hover {
+            background-color: #333;
+            color: white;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
             cursor: pointer;
-            font-size: 20px;
-            padding: 10px;
+            color: black; /* Set close button color to white */
         }
         .cta-button {
             display: inline-block;
@@ -387,6 +412,10 @@
 <div class="hero-section">
     <h1 class="black-text">Edvance AI</h1>
     <div class="tagline black-text">Empowering the next generation to <span class="bold">harness AI for good.</span></div>
+    <div class="tagline black-text">
+        Follow us on Instagram
+        <a href="https://www.instagram.com/edvanceai/" class="bold" target="_blank">@edvanceai</a>
+    </div>
     <div class="scroll-arrow" onclick="scrollToCarousels()">&#8595;</div>
 </div>
 
@@ -400,14 +429,14 @@
 <div class="join-us-section">
     <div class="join-us-content">
         <div class="join-us-text">
-            <h2>Leadership apps out on Monday!</h2>
-            <p><strong>Director</strong> positions open in PR, outreach, tech, and education<strong> for all high schoolers.</strong></p>
+            <h2>Leadership apps OPEN!</h2>
+            <p><strong>Director</strong> positions open in PR, outreach, tech, and education<strong> for ALL high schoolers.</strong></p>
         </div>
         <div class="join-us-image">
             <!-- Add your image here -->
         </div>
         <div class="join-us-button">
-            <a href="GetInvolved.html" class="apply-button">Join Us →</a>
+            <a href="https://bit.ly/edvanceAIapps" class="apply-button" target="_blank">Join Us →</a>
         </div>
     </div>
 </div>
@@ -436,10 +465,14 @@
     <a href="Contacts.html">Contact</a>
 </div>
 
-<div class="notification" id="Notification">
-    <span class="close-btn" onclick="dismissNotification()">&times;</span>
-    Applications out on Monday!
+<div id="Notification" class="notification">
+    <span class="close-btn" onclick="dismissNotification()">&#10005;</span>
+    <div class="notification-title">Leadership Applications Open NOW!!</div>
+    <div class="notification-text">Lead an <strong>international</strong> organization!</div>
+    <div class="notification-text">Open to <strong>ALL high schoolers.</strong></div>
+    <a href="https://bit.ly/edvanceAIapps" class="notification-button" target="_blank">APPLY Now</a>
 </div>
+
 
 <div class="footer">
     <p>© 2024 Edvance AI. All Rights Reserved.</p>
@@ -462,17 +495,21 @@
 
     function scrollToCarousels() {
         document.querySelector('.carousel-container').scrollIntoView({
-            behavior: 'smooth'
-        });
+        behavior: 'smooth'
+    });
     }
-
-    setTimeout(function() {
-        document.getElementById('Notification').classList.add('show');
-    }, 1000);
-
     function dismissNotification() {
-        document.getElementById('Notification').classList.remove('show');
+        const notification = document.getElementById('Notification');
+        notification.classList.remove('show');
+        setTimeout(() => {
+            notification.style.display = 'none'; // Hide element after fade-out
+        }, 400); // Match the transition duration
     }
+    setTimeout(() => {
+        const notification = document.getElementById('Notification');
+        notification.style.display = 'flex'; // Make sure it's displayed
+        notification.classList.add('show'); // Start the fade-in effect
+    }, 1000); // Delay before showing the notification
 </script>
 </body>
 </html>
