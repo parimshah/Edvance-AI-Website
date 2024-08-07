@@ -309,8 +309,8 @@
             top: 20%; /* Adjust position to the top of the screen */
             left: 50%;
             transform: translate(-50%, 0);
-            width: 800px; /* Adjust width as needed */
-            background-color: white; /* Set background to black */
+            width: 700px; /* Adjust width as needed */
+            background-color: #f0f8ff; /* Set background to black */
             color: black; /* Set text color to white */
             padding: 30px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -345,7 +345,7 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             transition: all 0.3s ease;
-            margin-top: 20px;
+            margin-top: 25px;
             color: white;
         }
         .notification-button:hover {
@@ -497,17 +497,20 @@
     });
     }
     function dismissNotification() {
-        const notification = document.getElementById('Notification');
-        notification.classList.remove('show');
-        setTimeout(() => {
-            notification.style.display = 'none'; // Hide element after fade-out
-        }, 400); // Match the transition duration
-    }
+    const notification = document.getElementById('Notification');
+    notification.classList.remove('show');
     setTimeout(() => {
-        const notification = document.getElementById('Notification');
-        notification.style.display = 'flex'; // Make sure it's displayed
+        notification.style.display = 'none'; // Hide element after fade-out
+    }, 400); // Match the transition duration
+    }
+
+    setTimeout(() => {
+    const notification = document.getElementById('Notification');
+    notification.style.display = 'flex'; // Make sure it's displayed
+    setTimeout(() => {
         notification.classList.add('show'); // Start the fade-in effect
-    }, 1000); // Delay before showing the notification
+    }, 10); // Slight delay to ensure display is set before adding class
+    }, 2000); // Delay before showing the notification
 </script>
 </body>
 </html>
